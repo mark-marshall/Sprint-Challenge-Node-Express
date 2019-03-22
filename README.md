@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Routing and middleware.
+
 - [ ] Describe Middleware?
+
+Middleware in Express is a chain of functions that extend the core functionality of Express. Most code we write is middleware e.g. route handlers. They come in 3 general forms typically; built-in middleware e.g. express.json, commercial e.g. helmet, and custom e.g. error-handlers.
 
 - [ ] Describe a Resource?
 
+Resources are the things that our application cares about e.g. users, products, orders, clients, returns are the resources that an e-commerce application would manage.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+A correctly chosen HTTP status code and a message with specific instructions on what failed and why.
+
 - [ ] How can we partition our application into sub-applications?
+
+Partitioning can be achieved via Express router.
 
 ## Project Setup
 
