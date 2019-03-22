@@ -5,6 +5,7 @@ const dbProjects = require('../data/helpers/projectModel');
 
 const projectsUrl = '/api/projects';
 const projectsByIdUrl = '/api/projects/:id';
+const projectActionsByIdUrl ='/api/projects/:id/actions'
 
 routes.use(express.json());
 
@@ -42,6 +43,25 @@ routes.get(projectsByIdUrl, async (req, res) => {
     res.status(500).json({ error: 'The projects could not be retrieved.' });
   }
 });
+
+/*
+GET ALL PROJECT ACTIONS BY ID
+[GET] a valid project id should be passed in params
+*/
+routes.get(projectActionsByIdUrl, async (req, res) => {
+    const { id } = req.params;
+    try {
+      const actions = await dbProjects.getProjectActions(id);
+      if (actions.length > 0) {
+        res.status(200).json(actions);
+      } else {
+        res.status(200).json({ message: 'There are no actions for this project!' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'The projects could not be retrieved.' });
+    }
+  });
+
 
 /*
 ADD A PROJECT
