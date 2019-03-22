@@ -75,7 +75,7 @@ routes.delete(projectsByIdUrl, async (req, res) => {
   try {
     const count = await dbProjects.remove(id);
     if (count) {
-      res.status(204).json({ message: 'Project successfully deleted' });
+      res.status(200).json({ message: 'Project successfully deleted' });
     } else {
       res.status(404).json({ message: 'No project with this id exists' });
     }
@@ -108,7 +108,7 @@ routes.put(projectsByIdUrl, async (req, res) => {
     }
   } else {
     res
-      .send(404)
+      .status(404)
       .json({
         message:
           'Please include an update to one of name, description, or completed',
